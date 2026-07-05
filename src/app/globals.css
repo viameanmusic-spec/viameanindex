@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #0a0a0b;
+  color: #edebe6;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "ss01";
+}
+
+::selection {
+  background: #f2a33c;
+  color: #0a0a0b;
+}
+
+/* ——— Display tipografi: geniş, ağır, afiş dili ——— */
+.display {
+  font-family: var(--font-archivo);
+  font-stretch: 125%;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 0.94;
+  text-transform: uppercase;
+}
+
+.display-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(237, 235, 230, 0.55);
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+/* ——— İmza: tungsten spot ışığı ——— */
+.spot-hero {
+  background:
+    radial-gradient(ellipse 55% 42% at 50% -6%, rgba(242, 163, 60, 0.16), transparent 65%),
+    radial-gradient(ellipse 70% 55% at 50% -10%, rgba(237, 235, 230, 0.05), transparent 70%);
+}
+
+.spot-card {
+  position: relative;
+  background: #121214;
+  border: 1px solid rgba(237, 235, 230, 0.08);
+  overflow: hidden;
+}
+
+.spot-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    420px circle at var(--mx, 50%) var(--my, 0%),
+    rgba(242, 163, 60, 0.09),
+    transparent 45%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.spot-card:hover::before {
+  opacity: 1;
+}
+
+.spot-card:hover {
+  border-color: rgba(242, 163, 60, 0.28);
+}
+
+/* ——— Scroll reveal ——— */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s cubic-bezier(0.2, 0.6, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ——— Işık çizgisi (bölüm ayracı) ——— */
+.lightline {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(242, 163, 60, 0.5), rgba(237, 235, 230, 0.15), transparent);
+}
+
+/* ——— Butonlar ——— */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 1rem 1.75rem;
+  border: 1px solid rgba(237, 235, 230, 0.2);
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  border-color: #f2a33c;
+  color: #f2a33c;
+}
+
+.btn-solid {
+  background: #edebe6;
+  color: #0a0a0b;
+  border-color: #edebe6;
+}
+
+.btn-solid:hover {
+  background: #f2a33c;
+  border-color: #f2a33c;
+  color: #0a0a0b;
+}
+
+/* ——— Form elemanları (admin) ——— */
+.field {
+  width: 100%;
+  background: #0a0a0b;
+  border: 1px solid rgba(237, 235, 230, 0.12);
+  color: #edebe6;
+  padding: 0.8rem 1rem;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.field:focus {
+  border-color: #f2a33c;
+}
+
+input[type="file"].field {
+  padding: 0.6rem 1rem;
+}
+
+video {
+  background: #000;
+}
+
+/* ——— Referans şeridi (marquee) ——— */
+.marquee {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  gap: 0;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 4rem;
+  padding-right: 4rem;
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
