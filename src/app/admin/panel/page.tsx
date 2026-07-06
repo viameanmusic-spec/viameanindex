@@ -74,14 +74,6 @@ export default function AdminPanel() {
           >
             İşletmeler
           </button>
-          <button
-            onClick={() => setTab("ekip")}
-            className={`label px-5 py-2.5 border transition-colors ${
-              tab === "ekip" ? "border-tungsten text-tungsten" : "border-seam text-ash hover:text-bone"
-            }`}
-          >
-            Ekip
-          </button>
         </div>
 
         {msg && (
